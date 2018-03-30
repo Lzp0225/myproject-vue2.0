@@ -26,7 +26,7 @@
     			const index = nav.substr(-1)     //截取字符串最后一个字符
 					//this.$store.commit('setHeadNav', nav)            // store.commit 方法触发状态变更
 					this.navTab = nav
-			    this.goRouter(Number(index))
+			    this.goRouter(Number(index))              //这里是要进行一个页面的跳转 所以要定义一个函数
 		    }
 	    }
     },

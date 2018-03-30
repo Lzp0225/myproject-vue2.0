@@ -86,7 +86,8 @@
 					this.imgurl = banner7url.replace('{size}', '400')
 					for(let i = 0 ;i < list.length;i++){
 						this.songList.push({
-							filename:list[i].filename
+							filename:list[i].filename,
+							hash:list[i].hash
 						})
 					}
 					this.$store.commit('setHeadTitle', rankname)

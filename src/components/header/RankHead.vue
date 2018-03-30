@@ -9,7 +9,7 @@
   export default {
     props: ['title', 'to', 'cStyle'],
     created(){
-    	debugger
+    	
     },
     methods: {
       routerBack(){

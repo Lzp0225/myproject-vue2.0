@@ -31,6 +31,7 @@
 		},
 		methods: {
 			getSongs(){
+				var boolean = this.$store.getters.isPlay;
 				Indicator.open({
 					text: '加载中...',
 					spinnerType: 'snake'

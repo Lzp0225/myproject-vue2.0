@@ -13,8 +13,7 @@
       </div>
       <div class="detail_player-lrc">
         <div class="lrc-content" :style="{marginTop: lrcOffset + 'px' }">
-          <p v-for="(item,index) in songLrc"
-             :class="{isCurrentLrc:item.seconds >= audio.currentLength}">
+          <p v-for="(item,index) in songLrc" :class="{isCurrentLrc:item.seconds >= audio.currentLength}">
             {{item.lrcContent}}</p>
         </div>
       </div>

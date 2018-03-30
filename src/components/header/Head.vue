@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <HeadLogo />
-    <RankHead v-if="head.toggle" :title="head.title" :cStyle="head.style" />
+    <RankHead v-if="head.toggle" :title="head.title" :cStyle="head.style" />                      <!--这里是绑定一个自定义的值 如果没绑定会传一个定值给/ -->
     <HeadNav v-else />
   </div>
 </template>
