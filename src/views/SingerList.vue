@@ -1,7 +1,7 @@
 <template>
   <div class="singer_list">
-    <mt-cell v-for="item in list" :to="`/singer/info/${item.singerid}`" is-link :title="item.singername" :key="index">
-      <img slot="icon" :src="item.imgurl.replace('{size}', '400')" width="60" height="60">
+    <mt-cell v-for="(item,index) in list" :to="`/singer/info/${item.singerid}`" is-link :title="item.singername" :key="index">
+      <img slot="icon" :src="item.imgurl.replace(/{size}/, '100')" width="60" height="60">
     </mt-cell>
   </div>
 </template>
@@ -17,7 +17,7 @@
     beforeRouteEnter(to, from, next){
       next(vm=> {
         vm.$store.commit('showHead', true)
-        vm.$store.commit('setHeadStyle', {'background': '#2CA2F9'})
+        vm.$store.commit('setHeadStyle', {'background': '#0cbe9f'})
         vm.getList();
       })
     },

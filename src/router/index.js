@@ -20,7 +20,7 @@ const router = new VueRouter({
 		path: '/search',
 		component: require('../views/Search')
 	}, {
-		path: '/rank/info/:id',
+		path: '/rank/info/:id',            //这里的path在组件中相当于 params:{infoId:123}  获取的话就直接this.$routes.params.id
 		component: require('../views/RankInfo')
 	}, {
 		path: '/plist/info/:id',

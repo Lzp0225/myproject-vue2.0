@@ -15,17 +15,17 @@
 			}
 		},
 		created(){
-			this.getList()
+			this.getRankList()
 		},
 		methods: {
-			getList(){
+			getRankList(){
 				Indicator.open({
 					text: '加载中...',
 					spinnerType: 'snake'
 				});
 				this.$http.get('/proxy/rank/list&json=true').then(({data}) => {
-					Indicator.close();
 					this.songList = data.rank.list
+					Indicator.close();
 				});
 			}
 		}

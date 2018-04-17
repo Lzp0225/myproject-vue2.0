@@ -13,6 +13,7 @@
     },
     methods: {
       routerBack(){
+        
         this.$router.go(-1);
       }
     }

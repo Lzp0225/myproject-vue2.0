@@ -27,7 +27,7 @@ module.exports = {
 		autoOpenBrowser: true,
 		assetsSubDirectory: 'static',
 		assetsPublicPath: '/',
-		proxyTable: {
+		proxyTable: {     //设置代理参数
 			'/proxy': {
 				target: 'http://m.kugou.com',
 				changeOrigin: true,

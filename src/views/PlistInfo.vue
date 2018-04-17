@@ -70,7 +70,10 @@
 			},
 			toggleDesp(){
 				this.hideDesp = !this.hideDesp
-			},
+			}
+		},
+		updated() {  
+			window.scroll(0, 0);  
 		}
 	}
 </script>

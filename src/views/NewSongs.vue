@@ -31,7 +31,7 @@
 		},
 		methods: {
 			getSongs(){
-				var boolean = this.$store.getters.isPlay;
+				var boolean = this.$store.getters.isPlay;  //只能得到初始的值  当state变化还得在computed中获取状态
 				Indicator.open({
 					text: '加载中...',
 					spinnerType: 'snake'
@@ -59,4 +59,6 @@
 	.mint-swipe-indicators {
 		bottom: 5px !important;
 	}
+	/* vw：viewpoint width，视窗宽度，1vw等于视窗宽度的1%。
+	vh：viewpoint height，视窗高度，1vh等于视窗高度的1%。 */
 </style>

@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -29,6 +30,7 @@ const store = new Vuex.Store({
 		showPlayer: false,
 		listenCount: 0,
 		isPlay: false,
+		showLogo:true,
 		listInfo: {
 			songList: [],
 			songIndex: 0
@@ -42,9 +44,13 @@ const store = new Vuex.Store({
 		detailPlayerFlag: state => state.detailPlayerFlag,
 		showPlayer: state => state.showPlayer,
 		isPlay: state => state.isPlay,
-		toggleHide: state => state.toggleHide
+		toggleHide: state => state.toggleHide,
+		showLogo: state =>state.showLogo
 	},
 	mutations: {
+		setShowLogo(state,flag){
+			state.showLogo = flag
+		},
 		setAudio(state, audio){
 			if (!state.listenCount) {
 				state.showPlayer = true  //首次进入应用时不可打开播放详情
@@ -93,7 +99,7 @@ const store = new Vuex.Store({
 		},
 		setListInfo: (state, {list, index}) => {
 			state.listInfo.songList = list
-			state.listInfo.songIndex = index
+			state.listInfo.songIndex = index         //这里纪录当前的下标以便更好前后切换歌曲
 		}
 	},
 	actions: {
@@ -126,7 +132,7 @@ const store = new Vuex.Store({
 			dispatch('getSong', hash)
 			dispatch('getLrc', hash)
 		},
-		next({dispatch, state}){
+		triggerNext({dispatch, state}){
 			var list = state.listInfo.songList
 			if (state.listInfo.songIndex == list.length - 1) {
 				state.listInfo.songIndex = 0

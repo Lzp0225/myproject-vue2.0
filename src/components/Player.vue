@@ -1,6 +1,6 @@
 <template>
   <div class="audio-view" :class="{'audio_panel_hide':toggleHide}">
-    <audio :src="audio.songUrl" autoplay id="audioPlay" @timeupdate="change()" @ended="next()" @error="next()"></audio>
+    <audio :src="audio.songUrl" autoplay id="audioPlay" @timeupdate="change()" @ended="next()"></audio>
    <!-- <div class="audio-panel-control" @click="togglePanel" :class="{'toggleContral':toggleHide}">
       <mt-spinner type="snake" :size="27" v-show="audioLoadding"></mt-spinner>
     </div>-->
@@ -57,7 +57,7 @@
         }
       },
       next(){
-        this.$store.dispatch('next');
+        this.$store.dispatch('triggerNext');
       }
     }
   }

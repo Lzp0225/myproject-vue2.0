@@ -22,6 +22,7 @@
 	import { InfiniteScroll } from 'mint-ui'
 	import { Toast } from 'mint-ui'
 	import { PLAY_AUDIO } from '../mixins'
+	
 	export default {
 		mixins: [PLAY_AUDIO],
 		data(){
@@ -33,7 +34,7 @@
 				page:1
 			}
 		},
-		//通过路由的before钩子解除router-view缓存限制
+		//通过路由的before钩子解除router-view缓存限制  路由的跳转相当于dom的显示隐藏  带参数的跳转会有缓存 导致返回后再次进入其他的组件会显示之前的dom 所以要解除缓存
 		beforeRouteEnter (to, from, next) {
 			next(vm => {
 				vm.$store.commit('showHead', true)
@@ -46,16 +47,19 @@
 		},
 		beforeRouteLeave(to, from, next){
 			this.$store.commit('showHead', false)
+		//	this.$store.commit('setShowLogo', true)
 			window.onscroll = null
 			next()
 		},
 		mounted(){
+			
 			window.onscroll = () => {
 				this.opacity = window.pageYOffset / 200
 				this.$store.commit('setHeadStyle', {background: `rgba(43,162,251,${this.opacity})`})
 			}
 		},
 		methods: {
+			
 			getToday(){
 				const time = new Date()
 				const year = time.getFullYear()
@@ -66,13 +70,14 @@
 				return `${year}-${month}-${date}`
 			},
 			getList(page_number){
+				this.loading = true;
 				Indicator.open({
 					text: '加载中...',
 					spinnerType: 'snake'
 				})
 				var infoID = this.$route.params.id;
 				this.$http.get(`/proxy/rank/info/?rankid=${infoID}&page=${page_number}&json=true`).then(({data}) => {
-					Indicator.close()
+					
 					const {info, songs} = data
 					const {banner7url, rankname} = info
 					const {list} = songs
@@ -93,13 +98,16 @@
 					this.$store.commit('setHeadTitle', rankname)
 					++this.page
 					this.loading = false
+					Indicator.close()
 				})
 			},
 			loadMore() {
 				if(this.loading) return;
-			    this.loading = true;
 			    this.getList(this.page)
 			}
+		},
+		updated() {  
+			window.scroll(0, 0);  
 		}
 	}
 </script>

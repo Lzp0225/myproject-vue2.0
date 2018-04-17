@@ -18,11 +18,12 @@
     	}
     },
     computed: {
-    	headNav: {          //这里一开始没有值  点击nav后会set一个新值  想得到就要get到那个新值   get后被选中的nav才会有样式  是因为headnav有值了
+    	headNav: {          //这里一开始没有值  点击nav后会set一个新值  想得到就要get到那个新值   get后被选中的nav才会有样式  是因为headnav有值了   获得数据
     		get(){
     			return this.navTab
 		    },
-		    set(nav) {      //set结束后才会重新get状态
+        set(nav) {      //set结束后才会重新get状态   设置数据
+        
     			const index = nav.substr(-1)     //截取字符串最后一个字符
 					//this.$store.commit('setHeadNav', nav)            // store.commit 方法触发状态变更
 					this.navTab = nav
